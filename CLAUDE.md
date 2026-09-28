@@ -43,6 +43,8 @@ Repositorio git en la rama `main`, con remoto en GitHub (`franciscoMR22/ModeloOS
 
 **Flujos (handshakes y URL).** [lib/flows.ts](lib/flows.ts) define diagramas de secuencia: `HANDSHAKE_FLOWS` (TCP, HTTPS sobre TCP + TLS 1.3, HTTP/3 sobre QUIC, QUIC 0-RTT), `RTT_COMPARISON` y `URL_FLOW` (de presionar Enter a renderizar: HSTS, cachés, ARP, DNS iterativo, TCP, TLS, HTTP/2). Cada mensaje tiene `t` (envío en RTT; llega 0.5 RTT después), `osi`, `protocolId` del catálogo y texto `basic`/`technical`. UI: [components/sequence-diagram.tsx](components/sequence-diagram.tsx) + [components/flows-section.tsx](components/flows-section.tsx) (sección `#flows`). «Ver ficha del protocolo» llama a `openProtocol` de `page.tsx`, que toma la capa principal del catálogo (no la del mensaje) antes de fijar `focus`.
 
+**Excepciones y práctica.** [lib/misfits.ts](lib/misfits.ts) lista protocolos que desbordan el modelo (ARP, TLS, BGP, MPLS, QUIC, ICMP, IS-IS, DHCP) con la capa «de libro» (`textbook`), las capas cuyas funciones realiza (`spans`, que puede diferir de `osi` en el catálogo) y sobre qué viaja; la UI es [components/misfits-section.tsx](components/misfits-section.tsx) (`#misfits`). [components/practice-section.tsx](components/practice-section.tsx) (`#practice`) es un ejercicio de arrastrar y soltar (Motion `drag` + `document.elementsFromPoint` sobre `[data-drop-zone]`, o tocar el chip y luego la capa): rondas de 8, modelo OSI o TCP/IP, nivel fácil (`EASY_IDS`, solo protocolos de una capa) o difícil (todo el catálogo; un multicapa es válido en cualquiera de sus capas `osi`). Carga el catálogo solo cuando la sección se acerca a la vista.
+
 **i18n sin librería.** Solo hay 2 idiomas: `es | en` (`Language` y `L = Record<Language, string>` en [lib/i18n.ts](lib/i18n.ts)); no agregues otros. Existen dos patrones:
 - Contenido de datos: campos `L` en `network-data.ts` y en `lib/protocols/*`.
 - Textos fijos de la UI: un diccionario local por componente (`labels`, `texts`, `T`, `heroContent`, `navLabels`, `footerText`) indexado por `lang`.
@@ -74,5 +76,4 @@ Todo está en [app/globals.css](app/globals.css) (el que importa `layout.tsx`):
 ## Pendiente / notas
 
 - La columna TCP/IP se alinea con un margen fijo (`md:mt-[150px]`), no con cálculo.
-- Pendiente: modo práctica (arrastrar protocolos a su capa) y sección «donde el modelo no encaja».
 - Las referencias técnicas de los datos se corrigieron contra RFC 1122/1123, RFC 9113, RFC 5531 y la cláusula 7 de ISO/IEC 7498-1 (§7.1 = Aplicación … §7.7 = Física). Mantén ese nivel de precisión al agregar contenido.

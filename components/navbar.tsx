@@ -15,8 +15,8 @@ const languages: { name: string; code: Language }[] = [
 ];
 
 const navLabels = {
-  es: { hero: "Inicio", layers: "Capas", trace: "Simulador", flows: "Flujos" },
-  en: { hero: "Home", layers: "Layers", trace: "Simulator", flows: "Flows" },
+  es: { hero: "Inicio", layers: "Capas", trace: "Simulador", flows: "Flujos", misfits: "Excepciones", practice: "Práctica" },
+  en: { hero: "Home", layers: "Layers", trace: "Simulator", flows: "Flows", misfits: "Edge cases", practice: "Practice" },
 };
 
 const modeLabels = {
@@ -101,14 +101,14 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
           <span className="font-bold text-sm">NetStack</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {SECTION_IDS.map((key) => {
             const isActive = active === key;
             return (
               <a
                 key={key}
                 href={`#${key}`}
-                className={`relative text-xs font-mono px-3 py-1.5 rounded-lg transition-colors duration-300 ${
+                className={`relative text-xs font-mono px-2.5 py-1.5 rounded-lg transition-colors duration-300 ${
                   isActive ? "text-primary" : "text-foreground/70 hover:text-foreground"
                 }`}
               >

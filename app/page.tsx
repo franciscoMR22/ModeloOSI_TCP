@@ -8,6 +8,8 @@ import { ProtocolSearch } from "@/components/protocol-search";
 import { loadProtocolCatalog } from "@/hooks/use-protocol-catalog";
 import { EncapsulationSimulator } from "@/components/encapsulation-simulator";
 import { FlowsSection } from "@/components/flows-section";
+import { MisfitsSection } from "@/components/misfits-section";
+import { PracticeSection } from "@/components/practice-section";
 import { Language, DetailMode } from "@/lib/network-data";
 import { motion } from "motion/react";
 import { Network } from "lucide-react";
@@ -72,6 +74,8 @@ export default function Page() {
         <div id="layers"><DualColumnSection lang={lang} mode={mode} focus={focus} onFocusHandled={clearFocus} /></div>
         <div id="trace"><EncapsulationSimulator lang={lang} mode={mode} /></div>
         <div id="flows"><FlowsSection lang={lang} mode={mode} onOpenProtocol={openProtocol} /></div>
+        <div id="misfits"><MisfitsSection lang={lang} mode={mode} onOpenProtocol={openProtocol} /></div>
+        <div id="practice"><PracticeSection lang={lang} mode={mode} /></div>
       </main>
 
       <footer className="px-6 py-12 border-t border-primary/10 text-center relative z-10 mt-10">
