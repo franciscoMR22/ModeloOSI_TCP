@@ -15,8 +15,8 @@ const languages: { name: string; code: Language }[] = [
 ];
 
 const navLabels = {
-  es: { hero: "Inicio", layers: "Capas", trace: "Traza" },
-  en: { hero: "Home", layers: "Layers", trace: "Trace" },
+  es: { hero: "Inicio", layers: "Capas", trace: "Simulador", flows: "Flujos" },
+  en: { hero: "Home", layers: "Layers", trace: "Simulator", flows: "Flows" },
 };
 
 const modeLabels = {

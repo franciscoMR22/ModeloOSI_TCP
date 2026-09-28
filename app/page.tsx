@@ -5,7 +5,9 @@ import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/hero-section";
 import { DualColumnSection, type ProtocolFocus } from "@/components/dual-column-section";
 import { ProtocolSearch } from "@/components/protocol-search";
+import { loadProtocolCatalog } from "@/hooks/use-protocol-catalog";
 import { EncapsulationSimulator } from "@/components/encapsulation-simulator";
+import { FlowsSection } from "@/components/flows-section";
 import { Language, DetailMode } from "@/lib/network-data";
 import { motion } from "motion/react";
 import { Network } from "lucide-react";
@@ -16,6 +18,13 @@ export default function Page() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [focus, setFocus] = useState<ProtocolFocus | null>(null);
   const clearFocus = useCallback(() => setFocus(null), []);
+
+  // Lleva a la tarjeta de la capa y abre la ficha del protocolo (búsqueda global y flujos)
+  // La capa se toma del catálogo: la ficha vive en su capa principal, no en la que liste quien la invoca
+  const openProtocol = useCallback((id: string, fallbackOsi: number) => {
+    document.getElementById("layers")?.scrollIntoView({ behavior: "smooth" });
+    loadProtocolCatalog().then((c) => setFocus({ id, osi: c.PROTOCOLS_BY_ID[id]?.osi[0] ?? fallbackOsi }));
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -55,16 +64,14 @@ export default function Page() {
         open={searchOpen}
         onOpenChange={setSearchOpen}
         lang={lang}
-        onSelect={(p) => {
-          document.getElementById("layers")?.scrollIntoView({ behavior: "smooth" });
-          setFocus({ id: p.id, osi: p.osi[0] });
-        }}
+        onSelect={(p) => openProtocol(p.id, p.osi[0])}
       />
       
       <main className="relative z-10 pt-20">
         <div id="hero"><HeroSection lang={lang} /></div>
         <div id="layers"><DualColumnSection lang={lang} mode={mode} focus={focus} onFocusHandled={clearFocus} /></div>
         <div id="trace"><EncapsulationSimulator lang={lang} mode={mode} /></div>
+        <div id="flows"><FlowsSection lang={lang} mode={mode} onOpenProtocol={openProtocol} /></div>
       </main>
 
       <footer className="px-6 py-12 border-t border-primary/10 text-center relative z-10 mt-10">

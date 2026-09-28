@@ -22,7 +22,7 @@ pnpm lint     # "eslint ." — ESLint NO está en devDependencies; hay que insta
 
 No hay tests. `next.config.mjs` tiene `typescript.ignoreBuildErrors: true`, así que `pnpm build` **no** detecta errores de tipos; para eso usa `pnpm exec tsc --noEmit`.
 
-El directorio no es un repositorio git.
+Repositorio git en la rama `main`, con remoto en GitHub (`franciscoMR22/ModeloOSI_TCP`). El usuario hace los `push` él mismo.
 
 ## Arquitectura
 
@@ -40,6 +40,8 @@ El directorio no es un repositorio git.
 **Simulador de encapsulamiento.** [lib/encapsulation.ts](lib/encapsulation.ts) modela una petición HTTP/2 (trama HEADERS) cifrada con TLS 1.3 sobre TCP/IPv4/Ethernet con tamaños reales: `computeEncapsulation()` calcula MSS, número de segmentos, relleno, trama y bytes en el cable (preámbulo + IFG); `buildSegments()` da los bloques visibles según la capa actual; `SIM_STEPS` tiene el texto de cada paso para envío y recepción (la recepción recorre los pasos al revés y cada capa quita solo lo suyo). La UI es [components/encapsulation-simulator.tsx](components/encapsulation-simulator.tsx) (sección `#trace`); el hero tiene una vista previa en bucle. Casos de referencia: segmento lleno = IP 1500 B, trama 1518 B, 1538 B en el cable.
 
 **Cabeceras.** [lib/headers.ts](lib/headers.ts) define campo por campo (ancho en bits, ejemplo, explicación básica y técnica) Ethernet II, IPv4, IPv6, TCP, UDP, registro TLS 1.3 y trama HTTP/2. Los ejemplos pueden llevar `{marcadores}` que se llenan con `headerValues()`. [components/header-diagram.tsx](components/header-diagram.tsx) las dibuja en filas de 32 bits al estilo RFC; se usa en el inspector del simulador y en la pestaña «Cabecera» del popover (`HEADER_BY_PROTOCOL` asocia protocolo → cabecera).
+
+**Flujos (handshakes y URL).** [lib/flows.ts](lib/flows.ts) define diagramas de secuencia: `HANDSHAKE_FLOWS` (TCP, HTTPS sobre TCP + TLS 1.3, HTTP/3 sobre QUIC, QUIC 0-RTT), `RTT_COMPARISON` y `URL_FLOW` (de presionar Enter a renderizar: HSTS, cachés, ARP, DNS iterativo, TCP, TLS, HTTP/2). Cada mensaje tiene `t` (envío en RTT; llega 0.5 RTT después), `osi`, `protocolId` del catálogo y texto `basic`/`technical`. UI: [components/sequence-diagram.tsx](components/sequence-diagram.tsx) + [components/flows-section.tsx](components/flows-section.tsx) (sección `#flows`). «Ver ficha del protocolo» llama a `openProtocol` de `page.tsx`, que toma la capa principal del catálogo (no la del mensaje) antes de fijar `focus`.
 
 **i18n sin librería.** Solo hay 2 idiomas: `es | en` (`Language` y `L = Record<Language, string>` en [lib/i18n.ts](lib/i18n.ts)); no agregues otros. Existen dos patrones:
 - Contenido de datos: campos `L` en `network-data.ts` y en `lib/protocols/*`.
@@ -72,5 +74,5 @@ Todo está en [app/globals.css](app/globals.css) (el que importa `layout.tsx`):
 ## Pendiente / notas
 
 - La columna TCP/IP se alinea con un margen fijo (`md:mt-[150px]`), no con cálculo.
-- Pendiente: visualizador de handshakes (TCP, TLS 1.3, QUIC), escenario «qué pasa al escribir una URL», modo práctica y sección «donde el modelo no encaja».
+- Pendiente: modo práctica (arrastrar protocolos a su capa) y sección «donde el modelo no encaja».
 - Las referencias técnicas de los datos se corrigieron contra RFC 1122/1123, RFC 9113, RFC 5531 y la cláusula 7 de ISO/IEC 7498-1 (§7.1 = Aplicación … §7.7 = Física). Mantén ese nivel de precisión al agregar contenido.
