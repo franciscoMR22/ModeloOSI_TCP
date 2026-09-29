@@ -62,11 +62,11 @@ function EncapsulationPreview() {
         className="rounded-xl border p-1.5 flex items-stretch gap-1.5"
         style={{ borderColor: `${color}66`, background: `${color}14` }}
       >
-        <span className="shrink-0 self-center text-[9px] font-mono font-bold px-1.5 py-1 rounded-md text-white" style={{ background: color }}>
+        <span className="shrink-0 self-center text-[9px] font-mono font-bold px-1.5 py-1 rounded-md text-white whitespace-nowrap" style={{ background: color }}>
           {w.label}
         </span>
         {i === 0 ? (
-          <span className="flex-1 self-center text-left text-[10px] font-mono opacity-70 px-1">GET /api/v1</span>
+          <span className="flex-1 min-w-0 self-center text-left text-[10px] font-mono opacity-70 px-1 truncate">GET /api/v1</span>
         ) : (
           <div className="flex-1 min-w-0">{renderLevel(i - 1)}</div>
         )}
@@ -76,7 +76,16 @@ function EncapsulationPreview() {
 
   return (
     <div className="space-y-3">
-      <AnimatePresence mode="popLayout">{renderLevel(shown)}</AnimatePresence>
+      {/* Contenedor de altura reservada: el nivel más anidado (el más alto) fija el tamaño
+          para que el crecimiento cíclico de la vista previa nunca reacomode el resto de la página. */}
+      <div className="relative">
+        <div className="invisible" aria-hidden>
+          {renderLevel(WRAPS.length - 1)}
+        </div>
+        <div className="absolute inset-0 overflow-hidden">
+          <AnimatePresence mode="popLayout">{renderLevel(shown)}</AnimatePresence>
+        </div>
+      </div>
       <div className="flex justify-center gap-1.5">
         {WRAPS.map((w, i) => (
           <motion.span
