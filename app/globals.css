@@ -108,6 +108,15 @@
 }
 
 @layer utilities {
+  /* Oculta la barra de scroll del menú de secciones sin quitarle el desplazamiento */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .glass-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -176,5 +185,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  /* La barra fija ahora tiene dos filas (marca/controles + secciones) */
+  scroll-padding-top: 8rem;
 }

@@ -101,7 +101,13 @@ function EncapsulationPreview() {
   );
 }
 
-export function HeroSection({ lang }: { lang: Language }) {
+interface HeroSectionProps {
+  lang: Language;
+  /** Cambia a la sección del simulador (el menú ya no navega por anclas). */
+  onOpenSimulator: () => void;
+}
+
+export function HeroSection({ lang, onOpenSimulator }: HeroSectionProps) {
   const t = heroContent[lang];
 
   return (
@@ -126,9 +132,9 @@ export function HeroSection({ lang }: { lang: Language }) {
         </span>
         <EncapsulationPreview />
         <p className="text-[10px] font-mono mt-4 opacity-50 italic">{t.encapLabel}</p>
-        <a href="#trace" className="mt-3 inline-block text-[11px] font-mono text-primary hover:opacity-70 transition-opacity">
+        <button onClick={onOpenSimulator} className="mt-3 inline-block text-[11px] font-mono text-primary hover:opacity-70 transition-opacity">
           {t.cta} →
-        </a>
+        </button>
       </GlassCard>
 
       <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="flex flex-col items-center gap-2">
