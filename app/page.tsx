@@ -12,7 +12,7 @@ import { FlowsSection } from "@/components/flows-section";
 import { MisfitsSection } from "@/components/misfits-section";
 import { PracticeSection } from "@/components/practice-section";
 import { Language, DetailMode } from "@/lib/network-data";
-import { Network } from "lucide-react";
+import Image from "next/image";
 
 // Transición "de una vez": sale con un fundido corto y acelerado, entra con el mismo
 // ease de entrada que usa el resto del sitio (--ease-out-expo). Sin solapes ni demora:
@@ -50,10 +50,8 @@ export default function Page() {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const footerText = {
-    es: "Arquitectura de Sistemas © 2026 • Francisco Mireles Rodriguez",
-    en: "Systems Architecture © 2026 • Francisco Mireles Rodriguez"
-  };
+  // El nombre no se traduce; se deja fuera del diccionario bilingüe del resto del sitio.
+  const footerName = "Francisco Mireles Rodriguez";
 
   return (
     <div className="mesh-gradient min-h-screen transition-colors duration-500">
@@ -102,15 +100,13 @@ export default function Page() {
         </AnimatePresence>
       </main>
 
-      <footer className="px-6 py-12 border-t border-primary/10 text-center relative z-10 mt-10">
-        <div className="flex flex-col items-center gap-4">
-          <div className="flex items-center gap-2 text-primary opacity-60">
-            <Network className="w-5 h-5" />
-            <span className="font-mono text-[10px] tracking-[0.3em]">OSI × TCP/IP</span>
+      <footer className="px-6 py-5 border-t border-primary/10 text-center relative z-10 mt-6">
+        <div className="flex flex-col items-center gap-1">
+          <div className="flex items-center gap-2 opacity-70">
+            <Image src="/logo3.png" alt="" width={20} height={20} className="object-contain" />
+            <span className="font-mono text-[10px] tracking-[0.3em] text-primary">OSI × TCP/IP</span>
           </div>
-          <p className="text-xs font-mono text-muted-foreground italic">
-            {footerText[lang]}
-          </p>
+          <p className="text-[11px] font-mono text-muted-foreground">{footerName}</p>
         </div>
       </footer>
     </div>

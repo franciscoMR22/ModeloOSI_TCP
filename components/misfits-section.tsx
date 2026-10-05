@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { ExternalLink, BookOpen, Wrench, Truck } from "lucide-react";
 import { GlassCard } from "@/components/glass-card";
+import { LiquidGlassButton } from "@/components/liquid-glass-button";
 import { OSI_LAYERS, type DetailMode, type Language } from "@/lib/network-data";
 import { MISFITS, type Misfit } from "@/lib/misfits";
 import { LAYER_COLORS } from "@/lib/encapsulation";
@@ -108,9 +109,9 @@ function MisfitCard({ misfit: m, lang, mode, onOpen }: { misfit: Misfit; lang: L
             <span className="flex items-start gap-1.5 text-[10px] font-mono text-emerald-700 dark:text-emerald-300">
               <Truck className="w-3 h-3 mt-px shrink-0" /> {t.carrier}: {m.carrier[lang]}
             </span>
-            <button onClick={onOpen} className="inline-flex items-center gap-1 text-[11px] font-mono text-primary hover:opacity-70 transition-opacity">
+            <LiquidGlassButton onClick={onOpen} glowColor={color} size="sm" className="text-primary">
               {t.open} <ExternalLink className="w-3 h-3" />
-            </button>
+            </LiquidGlassButton>
           </div>
         </div>
       </div>
