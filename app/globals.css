@@ -24,6 +24,8 @@
   --border: oklch(0.88 0.02 70);
   --input: oklch(0.88 0.02 70);
   --ring: oklch(0.42 0.11 250);
+  /* Capa translúcida sobre el fondo de chaquira para que el texto siga siendo legible */
+  --scrim: oklch(0.97 0.012 75 / 0.55);
 
   /* Glassmorphism Light Variables: vidrio con un dejo cálido de crema y ocre */
   --glass-bg: rgba(250, 245, 235, 0.45);
@@ -59,6 +61,8 @@
   --border: oklch(0.28 0.025 255);
   --input: oklch(0.28 0.025 255);
   --ring: oklch(0.68 0.12 235);
+  /* El fondo de chaquira ya es oscuro de por sí: aquí basta un velo tenue */
+  --scrim: oklch(0.16 0.025 255 / 0.4);
 
   /* Glassmorphism Dark Variables: vidrio añil con un filo cálido de ocre */
   --glass-bg: rgba(22, 28, 48, 0.4);
@@ -190,14 +194,18 @@
     mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   }
 
+  /* Fondo: mosaico de chaquira (arte huichol) con motivos de redes/capas OSI en vez de la
+     iconografía tradicional — generado como mosaico de cuentas (public/huichol-network-bg.svg),
+     no una foto. Una sola imagen grande y fija, no repetida, con un velo encima para legibilidad. */
   .mesh-gradient {
     background-color: var(--background);
     background-image:
-      url("/talavera-pattern.svg"),
-      radial-gradient(at 0% 0%, oklch(0.42 0.11 250 / 0.14) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, oklch(0.55 0.14 42 / 0.1) 0px, transparent 50%);
-    background-size: 140px 140px, auto, auto;
-    background-repeat: repeat, no-repeat, no-repeat;
+      linear-gradient(var(--scrim), var(--scrim)),
+      url("/huichol-network-bg.svg");
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
   }
 }
 
