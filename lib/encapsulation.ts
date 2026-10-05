@@ -302,5 +302,5 @@ export const SIM_STEPS: SimStep[] = [
 ];
 
 export const LAYER_COLORS: Record<number, string> = {
-  7: "#7c3aed", 6: "#6d28d9", 5: "#4f46e5", 4: "#2563eb", 3: "#0284c7", 2: "#0369a1", 1: "#075985",
+  7: "#2B5F8A", 6: "#1F7A82", 5: "#2E8C6B", 4: "#6E9142", 3: "#B8862E", 2: "#C0572A", 1: "#8C3A1E",
 };

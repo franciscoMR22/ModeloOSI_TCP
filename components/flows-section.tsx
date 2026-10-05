@@ -268,7 +268,7 @@ function RttComparison({ lang, highlight }: { lang: Language; highlight: string 
                   className="h-full rounded-md flex items-center px-2 text-[9px] font-mono text-white whitespace-nowrap"
                   animate={{ width: `${(c.rtt / max) * 100}%`, opacity: active ? 1 : 0.6 }}
                   transition={{ type: "spring", stiffness: 140, damping: 22 }}
-                  style={{ background: "linear-gradient(90deg, #7c3aed, #2563eb, #0284c7)" }}
+                  style={{ background: "linear-gradient(90deg, #2B5F8A, #6E9142, #B8862E)" }}
                 >
                   {c.rtt} RTT
                 </motion.div>

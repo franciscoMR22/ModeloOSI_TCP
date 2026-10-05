@@ -5,10 +5,10 @@ import { TCPIP_LAYERS, TCPIP_TO_OSI } from "@/lib/network-data";
 import { useEffect, useRef, useState } from "react";
 
 const mappingColors: Record<number, string> = {
-  4: "#7c3aed",
-  3: "#2563eb",
-  2: "#0284c7",
-  1: "#0369a1",
+  4: "#2B5F8A",
+  3: "#6E9142",
+  2: "#B8862E",
+  1: "#C0572A",
 };
 
 interface ConnectorPath {

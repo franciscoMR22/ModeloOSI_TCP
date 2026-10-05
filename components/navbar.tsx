@@ -173,7 +173,7 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
         {/* Barra de progreso de lectura (de la sección activa) */}
         <motion.div
           style={{ scaleX: progress }}
-          className="absolute left-0 right-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-500"
+          className="absolute left-0 right-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-[#2B5F8A] via-[#B8862E] to-[#C0572A]"
         />
       </motion.div>
     </motion.header>

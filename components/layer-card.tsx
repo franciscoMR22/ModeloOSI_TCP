@@ -42,13 +42,13 @@ interface LayerCardProps {
 }
 
 const colorStyles: Record<string, string> = {
-  "#7c3aed": "border-violet-400/30 text-violet-600 dark:text-violet-400 bg-violet-500/5",
-  "#6d28d9": "border-violet-500/30 text-violet-600 dark:text-violet-400 bg-violet-600/5",
-  "#4f46e5": "border-indigo-400/30 text-indigo-600 dark:text-indigo-400 bg-indigo-500/5",
-  "#2563eb": "border-blue-400/30 text-blue-600 dark:text-blue-400 bg-blue-500/5",
-  "#0284c7": "border-sky-400/30 text-sky-600 dark:text-sky-400 bg-sky-500/5",
-  "#0369a1": "border-cyan-400/30 text-cyan-600 dark:text-cyan-400 bg-cyan-500/5",
-  "#075985": "border-slate-400/30 text-slate-600 dark:text-slate-400 bg-slate-500/5",
+  "#2B5F8A": "border-blue-400/30 text-blue-700 dark:text-blue-400 bg-blue-500/5",
+  "#1F7A82": "border-cyan-400/30 text-cyan-700 dark:text-cyan-400 bg-cyan-500/5",
+  "#2E8C6B": "border-teal-400/30 text-teal-700 dark:text-teal-400 bg-teal-500/5",
+  "#6E9142": "border-green-400/30 text-green-700 dark:text-green-400 bg-green-500/5",
+  "#B8862E": "border-amber-400/30 text-amber-700 dark:text-amber-400 bg-amber-500/5",
+  "#C0572A": "border-orange-400/30 text-orange-700 dark:text-orange-400 bg-orange-500/5",
+  "#8C3A1E": "border-red-400/30 text-red-800 dark:text-red-400 bg-red-500/5",
 };
 
 // Contenido expandido: cada bloque entra escalonado

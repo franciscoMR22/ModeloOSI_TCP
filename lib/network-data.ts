@@ -61,7 +61,7 @@ export const OSI_LAYERS: OSILayer[] = [
     name: { es: "Aplicación", en: "Application" },
     pdu: { es: "Datos", en: "Data" },
     standard: "ISO/IEC 7498-1 §7.1",
-    color: "#7c3aed",
+    color: "#2B5F8A",
     keywords: ["Request/Response", "URI", "ALPN", "API"],
     summary: {
       es: "Es la capa con la que interactúan los programas: define cómo una aplicación pide y recibe servicios de red, como cargar una página, enviar un correo o resolver un nombre. No es la aplicación en sí (el navegador), sino los protocolos que esta usa para comunicarse.",
@@ -159,7 +159,7 @@ export const OSI_LAYERS: OSILayer[] = [
     name: { es: "Presentación", en: "Presentation" },
     pdu: { es: "Datos", en: "Data" },
     standard: "ISO/IEC 7498-1 §7.2 · ISO/IEC 8822",
-    color: "#6d28d9",
+    color: "#1F7A82",
     keywords: ["Transfer syntax", "ASN.1", "UTF-8", "Encryption"],
     summary: {
       es: "Se asegura de que ambos extremos entiendan los datos de la misma forma: traduce formatos, codifica los caracteres, comprime y, según la convención más común, cifra.",
@@ -249,7 +249,7 @@ export const OSI_LAYERS: OSILayer[] = [
     name: { es: "Sesión", en: "Session" },
     pdu: { es: "Datos", en: "Data" },
     standard: "ISO/IEC 7498-1 §7.3 · ISO/IEC 8326",
-    color: "#4f46e5",
+    color: "#2E8C6B",
     keywords: ["Dialogue control", "Tokens", "Sync points", "Resumption"],
     summary: {
       es: "Organiza el diálogo entre dos aplicaciones: abre, mantiene y cierra la sesión, decide quién habla y cuándo, y permite retomar una transferencia desde un punto de control en lugar de empezar de cero.",
@@ -339,7 +339,7 @@ export const OSI_LAYERS: OSILayer[] = [
     name: { es: "Transporte", en: "Transport" },
     pdu: { es: "Segmentos", en: "Segments" },
     standard: "ISO/IEC 7498-1 §7.4 · ISO/IEC 8073",
-    color: "#2563eb",
+    color: "#6E9142",
     keywords: ["Ports", "3-way handshake", "Sliding window", "ARQ"],
     summary: {
       es: "Lleva los datos de un programa a otro programa en otra computadora. Según el protocolo, garantiza que lleguen completos y en orden (TCP) o prioriza la rapidez (UDP). Los puertos indican a qué aplicación va cada dato.",
@@ -444,7 +444,7 @@ export const OSI_LAYERS: OSILayer[] = [
     name: { es: "Red", en: "Network" },
     pdu: { es: "Paquetes", en: "Packets" },
     standard: "ISO/IEC 7498-1 §7.5 · ISO/IEC 8473",
-    color: "#0284c7",
+    color: "#B8862E",
     keywords: ["Longest prefix match", "CIDR", "TTL", "Best effort"],
     summary: {
       es: "Hace que un paquete viaje entre redes distintas hasta su destino, aunque cruce decenas de routers. Usa direcciones lógicas (IP) y decide por dónde enviar cada paquete.",
@@ -549,7 +549,7 @@ export const OSI_LAYERS: OSILayer[] = [
     name: { es: "Enlace de datos", en: "Data Link" },
     pdu: { es: "Tramas", en: "Frames" },
     standard: "ISO/IEC 7498-1 §7.6 · IEEE 802",
-    color: "#0369a1",
+    color: "#C0572A",
     keywords: ["MAC", "LLC", "FCS", "VLAN"],
     summary: {
       es: "Mueve tramas entre dispositivos conectados al mismo enlace local, por ejemplo tu computadora y el router de casa. Usa direcciones físicas (MAC) y detecta si una trama llegó dañada.",
@@ -654,7 +654,7 @@ export const OSI_LAYERS: OSILayer[] = [
     name: { es: "Física", en: "Physical" },
     pdu: { es: "Bits", en: "Bits" },
     standard: "ISO/IEC 7498-1 §7.7",
-    color: "#075985",
+    color: "#8C3A1E",
     keywords: ["Line coding", "Modulation", "Baud", "Medium"],
     summary: {
       es: "Convierte los bits en señales físicas (pulsos eléctricos, luz o radio) y las transmite por el medio. Define cables, conectores, voltajes, frecuencias y velocidades.",
@@ -749,7 +749,7 @@ export const TCPIP_LAYERS: TCPIPLayer[] = [
     name: { es: "Aplicación", en: "Application" },
     pdu: { es: "Datos", en: "Data" },
     rfc: "RFC 1123 (Application & Support)",
-    color: "#7c3aed",
+    color: "#2B5F8A",
     keywords: ["Sockets", "End-to-end", "Services"],
     summary: {
       es: "Agrupa lo que en OSI son las capas 5, 6 y 7: los protocolos que las aplicaciones usan directamente (HTTP, DNS, correo), incluidos el formato de los datos y el cifrado.",
@@ -833,7 +833,7 @@ export const TCPIP_LAYERS: TCPIPLayer[] = [
     name: { es: "Transporte", en: "Transport" },
     pdu: { es: "Segmentos / datagramas", en: "Segments / datagrams" },
     rfc: "RFC 1122 §4 (Transport Layer)",
-    color: "#2563eb",
+    color: "#6E9142",
     keywords: ["Congestion control", "Sequence numbers", "Sockets"],
     summary: {
       es: "Equivale a la capa 4 de OSI: entrega datos entre programas de distintos hosts, con garantías (TCP) o sin ellas (UDP).",
@@ -902,7 +902,7 @@ export const TCPIP_LAYERS: TCPIPLayer[] = [
     name: { es: "Internet", en: "Internet" },
     pdu: { es: "Paquetes (datagramas IP)", en: "Packets (IP datagrams)" },
     rfc: "RFC 1122 §3 (Internet Layer)",
-    color: "#0284c7",
+    color: "#B8862E",
     keywords: ["Hourglass", "Datagram", "Routing table"],
     summary: {
       es: "Corresponde a la capa 3 de OSI: IP lleva cada paquete entre redes hasta su destino. Es la «cintura» del modelo: todo pasa por IP.",
@@ -975,7 +975,7 @@ export const TCPIP_LAYERS: TCPIPLayer[] = [
     name: { es: "Enlace (Acceso a Red)", en: "Link (Network Access)" },
     pdu: { es: "Tramas / bits", en: "Frames / bits" },
     rfc: "RFC 1122 §2 (Link Layer)",
-    color: "#0369a1",
+    color: "#C0572A",
     keywords: ["MAC address", "ARP", "Hardware interface"],
     summary: {
       es: "Agrupa las capas 1 y 2 de OSI: la tecnología concreta que conecta un equipo con su red local, como Ethernet o Wi-Fi.",

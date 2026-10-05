@@ -61,13 +61,13 @@ export default function Page() {
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(circle, oklch(0.75 0.12 240), transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #2B5F8A99, transparent 70%)" }}
         />
         <motion.div
           animate={{ x: [0, -25, 0], y: [0, 30, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 }}
           className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full opacity-25 blur-3xl"
-          style={{ background: "radial-gradient(circle, oklch(0.72 0.14 280), transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #C0572A80, transparent 70%)" }}
         />
       </div>
 

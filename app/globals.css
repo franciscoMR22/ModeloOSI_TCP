@@ -4,32 +4,32 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Paleta Light: Ice Blue / Crystal White */
-  --background: oklch(0.98 0.005 220);
-  --foreground: oklch(0.25 0.02 240);
-  --card: oklch(1 0 0 / 0.4);
-  --card-foreground: oklch(0.25 0.02 240);
-  --popover: oklch(1 0 0 / 0.95);
-  --popover-foreground: oklch(0.25 0.02 240);
-  --primary: oklch(0.55 0.18 250);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.95 0.01 220);
-  --secondary-foreground: oklch(0.3 0.02 240);
-  --muted: oklch(0.93 0.01 220);
-  --muted-foreground: oklch(0.45 0.02 240);
-  --accent: oklch(0.65 0.12 210);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.6 0.18 25);
+  /* Paleta Light: Talavera y azulejo — añil profundo + terracota cálida sobre crema */
+  --background: oklch(0.97 0.012 75);
+  --foreground: oklch(0.24 0.03 255);
+  --card: oklch(1 0.005 75 / 0.4);
+  --card-foreground: oklch(0.24 0.03 255);
+  --popover: oklch(1 0.005 75 / 0.95);
+  --popover-foreground: oklch(0.24 0.03 255);
+  --primary: oklch(0.42 0.11 250);
+  --primary-foreground: oklch(0.98 0.01 75);
+  --secondary: oklch(0.93 0.02 70);
+  --secondary-foreground: oklch(0.3 0.03 250);
+  --muted: oklch(0.91 0.02 70);
+  --muted-foreground: oklch(0.48 0.03 60);
+  --accent: oklch(0.55 0.14 42);
+  --accent-foreground: oklch(0.98 0.01 75);
+  --destructive: oklch(0.58 0.19 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.9 0.01 220);
-  --input: oklch(0.9 0.01 220);
-  --ring: oklch(0.55 0.18 250);
-  
-  /* Glassmorphism Light Variables */
-  --glass-bg: rgba(255, 255, 255, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-shadow: rgba(0, 0, 0, 0.05);
-  
+  --border: oklch(0.88 0.02 70);
+  --input: oklch(0.88 0.02 70);
+  --ring: oklch(0.42 0.11 250);
+
+  /* Glassmorphism Light Variables: vidrio con un dejo cálido de crema y ocre */
+  --glass-bg: rgba(250, 245, 235, 0.45);
+  --glass-border: rgba(212, 160, 23, 0.25);
+  --glass-shadow: rgba(80, 50, 20, 0.08);
+
   --radius: 0.75rem;
 
   /* Tokens de movimiento compartidos */
@@ -41,28 +41,28 @@
 }
 
 .dark {
-  /* Paleta Dark: Deep Navy / Slate Blue */
-  --background: oklch(0.15 0.02 240);
-  --foreground: oklch(0.95 0.01 220);
-  --card: oklch(0.2 0.02 240 / 0.4);
-  --card-foreground: oklch(0.95 0.01 220);
-  --popover: oklch(0.18 0.02 240 / 0.95);
-  --popover-foreground: oklch(0.95 0.01 220);
-  --primary: oklch(0.65 0.15 240);
-  --primary-foreground: oklch(0.15 0.02 240);
-  --secondary: oklch(0.22 0.02 240);
-  --secondary-foreground: oklch(0.95 0.01 220);
-  --muted: oklch(0.25 0.02 240);
-  --muted-foreground: oklch(0.7 0.01 220);
-  --accent: oklch(0.35 0.08 240);
-  --accent-foreground: oklch(0.95 0.01 220);
-  --border: oklch(0.25 0.02 240);
-  --input: oklch(0.25 0.02 240);
-  --ring: oklch(0.65 0.15 240);
+  /* Paleta Dark: Talavera de noche — añil casi negro, con brillo de añil claro y terracota */
+  --background: oklch(0.16 0.025 255);
+  --foreground: oklch(0.94 0.02 75);
+  --card: oklch(0.21 0.03 255 / 0.4);
+  --card-foreground: oklch(0.94 0.02 75);
+  --popover: oklch(0.19 0.03 255 / 0.95);
+  --popover-foreground: oklch(0.94 0.02 75);
+  --primary: oklch(0.68 0.12 235);
+  --primary-foreground: oklch(0.15 0.02 255);
+  --secondary: oklch(0.24 0.025 255);
+  --secondary-foreground: oklch(0.94 0.02 75);
+  --muted: oklch(0.26 0.025 255);
+  --muted-foreground: oklch(0.72 0.02 70);
+  --accent: oklch(0.62 0.13 45);
+  --accent-foreground: oklch(0.15 0.02 255);
+  --border: oklch(0.28 0.025 255);
+  --input: oklch(0.28 0.025 255);
+  --ring: oklch(0.68 0.12 235);
 
-  /* Glassmorphism Dark Variables */
-  --glass-bg: rgba(15, 23, 42, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Glassmorphism Dark Variables: vidrio añil con un filo cálido de ocre */
+  --glass-bg: rgba(22, 28, 48, 0.4);
+  --glass-border: rgba(212, 160, 23, 0.15);
   --glass-shadow: rgba(0, 0, 0, 0.4);
   --glow-strength: 0.28;
 }
@@ -169,9 +169,12 @@
 
   .mesh-gradient {
     background-color: var(--background);
-    background-image: 
-      radial-gradient(at 0% 0%, oklch(0.55 0.15 240 / 0.15) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, oklch(0.65 0.12 210 / 0.1) 0px, transparent 50%);
+    background-image:
+      url("/talavera-pattern.svg"),
+      radial-gradient(at 0% 0%, oklch(0.42 0.11 250 / 0.14) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, oklch(0.55 0.14 42 / 0.1) 0px, transparent 50%);
+    background-size: 140px 140px, auto, auto;
+    background-repeat: repeat, no-repeat, no-repeat;
   }
 }
 

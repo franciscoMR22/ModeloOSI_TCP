@@ -57,7 +57,7 @@ export function SequenceDiagram({ flow, lang, step, onSelect, showTime = false }
               const span = right - left + 1;
               const rightward = to >= from;
               const state = i < step ? "past" : i === step ? "current" : "future";
-              const color = LAYER_COLORS[m.osi[0]] ?? "#2563eb";
+              const color = LAYER_COLORS[m.osi[0]] ?? "#6E9142";
               const offset = showTime ? 2 : 1;
 
               return (

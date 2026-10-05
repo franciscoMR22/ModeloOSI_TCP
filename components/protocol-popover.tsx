@@ -22,6 +22,7 @@ import type { Protocol } from "@/lib/protocols/types";
 import { STATUS_DOT, STATUS_LABELS } from "@/lib/protocols/labels";
 import { HEADERS, HEADER_BY_PROTOCOL } from "@/lib/headers";
 import { HeaderDiagram } from "@/components/header-diagram";
+import { LAYER_COLORS } from "@/lib/encapsulation";
 
 type TabId = "overview" | "technical" | "header" | "practice" | "refs";
 
@@ -124,11 +125,8 @@ export function ProtocolPopover({ protocol, byId, lang, mode, open, onOpenChange
   );
 }
 
-// Color de acento según la capa principal (misma paleta que las tarjetas)
-const LAYER_COLORS: Record<number, string> = {
-  7: "#7c3aed", 6: "#6d28d9", 5: "#4f46e5", 4: "#2563eb", 3: "#0284c7", 2: "#0369a1", 1: "#075985",
-};
-export const protocolColor = (p: Protocol) => LAYER_COLORS[p.osi[0]] ?? "#2563eb";
+// Color de acento según la capa principal (misma paleta que las tarjetas; LAYER_COLORS es la fuente única en lib/encapsulation.ts)
+export const protocolColor = (p: Protocol) => LAYER_COLORS[p.osi[0]] ?? "#6E9142";
 
 interface DetailProps {
   protocol: Protocol;
