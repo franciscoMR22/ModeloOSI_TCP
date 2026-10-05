@@ -20,7 +20,7 @@ pnpm start    # servir el build
 pnpm lint     # "eslint ." — ESLint NO está en devDependencies; hay que instalarlo antes
 ```
 
-No hay tests. `next.config.mjs` tiene `typescript.ignoreBuildErrors: true`, así que `pnpm build` **no** detecta errores de tipos; para eso usa `pnpm exec tsc --noEmit`.
+No hay tests. `next.config.mjs` tiene `typescript.ignoreBuildErrors: true`, así que `pnpm build` **no** detecta errores de tipos; para eso usa `pnpm exec tsc --noEmit`. También tiene `devIndicators: false` (quita el indicador flotante de `next dev`, la "N" con info de ruta/bundler, que solo existe en desarrollo).
 
 Repositorio git en la rama `main`, con remoto en GitHub (`franciscoMR22/ModeloOSI_TCP`). El usuario hace los `push` él mismo.
 
