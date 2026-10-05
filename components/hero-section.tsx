@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Language } from "@/lib/network-data";
 import { GlassCard } from "@/components/glass-card";
-import { LiquidGlassButton } from "@/components/liquid-glass-button";
+import { GlassButton } from "@/components/glass-button";
 import { LAYER_COLORS } from "@/lib/encapsulation";
 
 const heroContent = {
@@ -34,15 +34,6 @@ const WRAPS = [
   { osi: 2, label: "Ethernet", pdu: "Frame" },
 ];
 
-// Geometría fija del riel: no cambia de tamaño nunca, así el recorrido del paquete
-// no puede reacomodar el resto de la página (la causa del bug que ya corregimos antes).
-const TRACK_H = 172;
-const TRACK_PAD = 32;
-const TRACK_X = 30;
-const CORE_R = 5;
-const RING_STEP = 6;
-const ringRadius = (i: number) => 11 + (i - 1) * RING_STEP; // i = 1..WRAPS.length-1 → 11,17,23,29
-
 function EncapsulationPreview() {
   const reduce = useReducedMotion();
   const [level, setLevel] = useState(reduce ? WRAPS.length - 1 : 0);
@@ -56,60 +47,53 @@ function EncapsulationPreview() {
   // level === WRAPS.length: pausa con todo armado antes de reiniciar
   const shown = Math.min(level, WRAPS.length - 1);
 
-  // Posición vertical de cada parada del riel, de L7 (arriba) a L2 (abajo)
-  const tickY = WRAPS.map((_, i) => TRACK_PAD + (i / (WRAPS.length - 1)) * (TRACK_H - 2 * TRACK_PAD));
-  const springY = { type: "spring" as const, stiffness: 160, damping: 20 };
+  const renderLevel = (i: number): React.ReactNode => {
+    const w = WRAPS[i];
+    const color = LAYER_COLORS[w.osi];
+    return (
+      <motion.div
+        layout
+        key={w.label}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 220, damping: 24 }}
+        className="rounded-xl border p-1.5 flex items-stretch gap-1.5"
+        style={{ borderColor: `${color}66`, background: `${color}14` }}
+      >
+        <span className="shrink-0 self-center text-[9px] font-mono font-bold px-1.5 py-1 rounded-md text-white whitespace-nowrap" style={{ background: color }}>
+          {w.label}
+        </span>
+        {i === 0 ? (
+          <span className="flex-1 min-w-0 self-center text-left text-[10px] font-mono opacity-70 px-1 truncate">GET /api/v1</span>
+        ) : (
+          <div className="flex-1 min-w-0">{renderLevel(i - 1)}</div>
+        )}
+      </motion.div>
+    );
+  };
 
   return (
-    <div className="flex gap-3" style={{ height: TRACK_H }}>
-      {/* Riel: el paquete (punto central) baja de L7 a L2 y gana un anillo de color en cada parada */}
-      <svg width={64} height={TRACK_H} className="shrink-0 overflow-visible" aria-hidden>
-        <line x1={TRACK_X} y1={tickY[0]} x2={TRACK_X} y2={tickY[WRAPS.length - 1]} stroke="currentColor" strokeWidth={2} className="text-primary/15" />
-
-        {/* Marcas fijas de cada capa: se rellenan al pasar el paquete por ahí */}
-        {WRAPS.map((w, i) => (
-          <motion.circle
-            key={`tick-${w.label}`}
-            cx={TRACK_X}
-            cy={tickY[i]}
-            r={3}
-            strokeWidth={1.5}
-            stroke={LAYER_COLORS[w.osi]}
-            animate={{ fill: shown >= i ? LAYER_COLORS[w.osi] : "transparent" }}
-            transition={{ duration: 0.3 }}
-          />
-        ))}
-
-        {/* El paquete viajando: el centro es la carga (HTTP/2) y cada anillo es una capa ya atravesada */}
-        <AnimatePresence>
-          {Array.from({ length: shown + 1 }, (_, i) => i).map((i) => (
-            <motion.circle
-              key={`ring-${i}`}
-              cx={TRACK_X}
-              fill={i === 0 ? LAYER_COLORS[WRAPS[0].osi] : "none"}
-              stroke={i === 0 ? "none" : LAYER_COLORS[WRAPS[i].osi]}
-              strokeWidth={i === 0 ? 0 : 2.5}
-              initial={{ cy: tickY[shown], r: 0, opacity: 0 }}
-              animate={{ cy: tickY[shown], r: i === 0 ? CORE_R : ringRadius(i), opacity: 1 }}
-              exit={{ r: 0, opacity: 0 }}
-              transition={springY}
-            />
-          ))}
-        </AnimatePresence>
-      </svg>
-
-      {/* Etiquetas de capa, alineadas con cada parada del riel */}
-      <div className="relative flex-1" style={{ height: TRACK_H }}>
+    <div className="space-y-3">
+      {/* Contenedor de altura reservada: el nivel más anidado (el más alto) fija el tamaño
+          para que el crecimiento cíclico de la vista previa nunca reacomode el resto de la página. */}
+      <div className="relative">
+        <div className="invisible" aria-hidden>
+          {renderLevel(WRAPS.length - 1)}
+        </div>
+        <div className="absolute inset-0 overflow-hidden">
+          <AnimatePresence mode="popLayout">{renderLevel(shown)}</AnimatePresence>
+        </div>
+      </div>
+      <div className="flex justify-center gap-1.5">
         {WRAPS.map((w, i) => (
           <motion.span
             key={w.label}
-            animate={{ opacity: shown >= i ? 1 : 0.35 }}
-            transition={{ duration: 0.3 }}
-            className="absolute left-0 -translate-y-1/2 text-[9px] font-mono font-bold px-1.5 py-1 rounded-md text-white whitespace-nowrap"
-            style={{ top: tickY[i], background: LAYER_COLORS[w.osi] }}
-          >
-            {w.label}
-          </motion.span>
+            animate={{ opacity: i <= shown ? 1 : 0.25, width: i === shown ? 18 : 6 }}
+            transition={{ type: "spring", stiffness: 300, damping: 26 }}
+            className="h-1.5 rounded-full"
+            style={{ background: LAYER_COLORS[w.osi] }}
+          />
         ))}
       </div>
     </div>
@@ -147,9 +131,9 @@ export function HeroSection({ lang, onOpenSimulator }: HeroSectionProps) {
         </span>
         <EncapsulationPreview />
         <p className="text-[10px] font-mono mt-4 opacity-50 italic">{t.encapLabel}</p>
-        <LiquidGlassButton onClick={onOpenSimulator} size="sm" className="mt-3">
+        <GlassButton onClick={onOpenSimulator} size="sm" className="mt-3">
           {t.cta} <ArrowRight className="w-3.5 h-3.5" />
-        </LiquidGlassButton>
+        </GlassButton>
       </GlassCard>
     </section>
   );
