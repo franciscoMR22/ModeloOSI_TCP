@@ -173,7 +173,7 @@ export function PracticeSection({ lang, mode }: PracticeSectionProps) {
   return (
     <section ref={rootRef} className="px-4 sm:px-6 lg:px-8 py-20 max-w-5xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">{t.heading}</h2>
+        <h2 className="talavera-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">{t.heading}</h2>
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">{t.subheading}</p>
       </motion.div>
 

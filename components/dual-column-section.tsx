@@ -56,7 +56,7 @@ export function DualColumnSection({ lang, mode, focus, onFocusHandled }: DualCol
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        <h2 className="talavera-heading text-3xl md:text-4xl font-bold tracking-tight mb-4">
           {t.osi} <span className="text-primary/40">vs</span> {t.tcp}
         </h2>
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
@@ -76,9 +76,9 @@ export function DualColumnSection({ lang, mode, focus, onFocusHandled }: DualCol
         {/* Columna OSI */}
         <div className="space-y-4 relative z-20">
           <div className="flex items-center gap-3 mb-6 px-2">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/20" />
+            <div className="flex-1 border-t-2 border-dashed border-accent/40" />
             <span className="font-mono text-[10px] font-bold text-primary tracking-widest uppercase">{t.l7}</span>
-            <div className="h-px w-8 bg-primary/20" />
+            <div className="w-8 border-t-2 border-dashed border-accent/40" />
           </div>
           {OSI_LAYERS.map((layer, i) => {
             const group = osiToTcpip(layer.number);
@@ -106,9 +106,9 @@ export function DualColumnSection({ lang, mode, focus, onFocusHandled }: DualCol
         {/* Columna TCP/IP */}
         <div className="space-y-4 relative z-20">
           <div className="flex items-center gap-3 mb-6 px-2">
-            <div className="h-px w-8 bg-primary/20" />
+            <div className="w-8 border-t-2 border-dashed border-accent/40" />
             <span className="font-mono text-[10px] font-bold text-primary tracking-widest uppercase">{t.l4}</span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/20" />
+            <div className="flex-1 border-t-2 border-dashed border-accent/40" />
           </div>
           {TCPIP_LAYERS.map((layer, i) => {
             // Alineación visual: La capa 4 de TCP/IP abarca 3 de OSI (App, Pres, Ses)

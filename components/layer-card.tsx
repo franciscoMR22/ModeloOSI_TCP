@@ -145,7 +145,7 @@ export function LayerCard({
           <motion.div
             whileHover={{ rotate: -8, scale: 1.08 }}
             transition={HOVER_SPRING}
-            className={`w-10 h-10 rounded-xl flex items-center justify-center border ${styleClass}`}
+            className={`talavera-cut w-10 h-10 flex items-center justify-center border ${styleClass}`}
           >
             <Icon className="w-5 h-5" />
           </motion.div>

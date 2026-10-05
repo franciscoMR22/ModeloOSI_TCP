@@ -78,7 +78,7 @@ export function FlowsSection({ lang, mode, onOpenProtocol }: FlowsSectionProps) 
         viewport={{ once: true }}
         className="text-center mb-10"
       >
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">{t.heading}</h2>
+        <h2 className="talavera-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">{t.heading}</h2>
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">{t.subheading}</p>
       </motion.div>
 

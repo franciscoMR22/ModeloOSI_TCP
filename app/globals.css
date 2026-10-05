@@ -117,12 +117,35 @@
     display: none;
   }
 
+  /* Vidrio-talavera: cristal esmerilado que además lee como cerámica vidriada —
+     el craquelado del esmalte se ve a través del blur, y un filo interior pintado
+     de ocre enmarca la pieza, como el borde de un plato de talavera. */
   .glass-card {
-    background: var(--glass-bg);
+    background-color: var(--glass-bg);
+    background-image: url("/talavera-crackle.svg");
+    background-size: 200px 200px;
+    background-repeat: repeat;
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 8px 32px var(--glass-shadow);
+    box-shadow:
+      0 8px 32px var(--glass-shadow),
+      inset 0 0 0 1px color-mix(in oklch, var(--accent) 38%, transparent);
+  }
+
+  /* Silueta de azulejo cortado (octágono): la firma de forma del sistema, en vez de
+     esquinas simples redondeadas. Se usa en medallones de ícono y botones. */
+  .talavera-cut {
+    clip-path: polygon(22% 0, 78% 0, 100% 22%, 100% 78%, 78% 100%, 22% 100%, 0 78%, 0 22%);
+  }
+
+  /* Encabezados "pintados": el mismo degradado añil→terracota del título del hero,
+     reutilizado en cada título de sección para que se sienta un solo sistema. */
+  .talavera-heading {
+    background-image: linear-gradient(90deg, var(--primary), var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   /* Resplandor que sigue al puntero (ver components/glass-card.tsx) */

@@ -55,9 +55,11 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
   const maxWidth = useTransform(smoothY, SCROLL_RANGE, [1280, 1120]);
 
   const backdropFilter = useMotionTemplate`blur(${blur}px) saturate(160%)`;
-  const background = useMotionTemplate`color-mix(in oklch, var(--background) ${bgAlpha}%, transparent)`;
+  const backgroundColor = useMotionTemplate`color-mix(in oklch, var(--background) ${bgAlpha}%, transparent)`;
   const borderColor = useMotionTemplate`color-mix(in oklch, var(--glass-border) ${borderAlpha}%, transparent)`;
-  const boxShadow = useMotionTemplate`0 10px 40px -10px rgba(15, 23, 42, ${shadowAlpha})`;
+  // Sombra exterior dinámica (crece con el scroll) + filo interior pintado de ocre fijo,
+  // el mismo que usa .glass-card, para que la barra se sienta del mismo material.
+  const boxShadow = useMotionTemplate`0 10px 40px -10px rgba(15, 23, 42, ${shadowAlpha}), inset 0 0 0 1px color-mix(in oklch, var(--accent) 38%, transparent)`;
 
   // Progreso de scroll dentro de la sección activa (cada sección es ahora su propia "página")
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 28 });
@@ -71,7 +73,17 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
       className="fixed top-0 left-0 right-0 z-50 px-4"
     >
       <motion.div
-        style={{ maxWidth, backdropFilter, WebkitBackdropFilter: backdropFilter, background, borderColor, boxShadow }}
+        style={{
+          maxWidth,
+          backdropFilter,
+          WebkitBackdropFilter: backdropFilter,
+          backgroundColor,
+          backgroundImage: "url('/talavera-crackle.svg')",
+          backgroundSize: "200px 200px",
+          backgroundRepeat: "repeat",
+          borderColor,
+          boxShadow,
+        }}
         className="relative mx-auto rounded-2xl border overflow-hidden"
       >
         {/* Fila 1: marca y controles */}

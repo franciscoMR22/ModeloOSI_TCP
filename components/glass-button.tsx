@@ -5,9 +5,11 @@ import { motion, type HTMLMotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
 import { HOVER_SPRING } from "@/components/glass-card";
 
+// Más relleno horizontal que un botón normal: los cortes de esquina del octágono
+// (.talavera-cut) necesitan margen extra para no comerse el texto.
 const SIZES = {
-  sm: "h-8 px-3 text-[11px]",
-  default: "h-10 px-5 text-sm",
+  sm: "h-8 px-4 text-[11px]",
+  default: "h-10 px-7 text-sm",
 } as const;
 
 export interface GlassButtonProps extends HTMLMotionProps<"button"> {
@@ -38,7 +40,7 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(funct
         ...style,
       }}
       className={cn(
-        "glass-card inline-flex items-center justify-center gap-1.5 rounded-full font-mono font-bold transition-shadow duration-300 hover:shadow-lg",
+        "glass-card talavera-cut inline-flex items-center justify-center gap-1.5 font-mono font-bold transition-shadow duration-300 hover:shadow-lg",
         SIZES[size],
         className
       )}
