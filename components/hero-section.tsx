@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Language } from "@/lib/network-data";
 import { GlassCard } from "@/components/glass-card";
+import { LiquidGlassButton } from "@/components/liquid-glass-button";
 import { LAYER_COLORS } from "@/lib/encapsulation";
 
 const heroContent = {
   es: {
     title: "Arquitectura de Redes",
     subtitle: "Explora la profundidad técnica de los modelos OSI e Internet (TCP/IP). Analiza el encapsulamiento de datos desde la aplicación hasta los bits.",
-    scroll: "Baja para analizar las capas",
     encapTitle: "Encapsulamiento en acción",
     encapLabel: "Cada capa envuelve lo que recibe de la capa superior con su propia cabecera",
     cta: "Abrir el simulador",
@@ -19,7 +19,6 @@ const heroContent = {
   en: {
     title: "Network Architecture",
     subtitle: "Explore the technical depth of OSI and Internet (TCP/IP) models. Analyze data encapsulation from application to bits.",
-    scroll: "Scroll to analyze layers",
     encapTitle: "Encapsulation in action",
     encapLabel: "Each layer wraps what it receives from the layer above with its own header",
     cta: "Open the simulator",
@@ -132,15 +131,10 @@ export function HeroSection({ lang, onOpenSimulator }: HeroSectionProps) {
         </span>
         <EncapsulationPreview />
         <p className="text-[10px] font-mono mt-4 opacity-50 italic">{t.encapLabel}</p>
-        <button onClick={onOpenSimulator} className="mt-3 inline-block text-[11px] font-mono text-primary hover:opacity-70 transition-opacity">
-          {t.cta} →
-        </button>
+        <LiquidGlassButton onClick={onOpenSimulator} size="sm" className="mt-3">
+          {t.cta} <ArrowRight className="w-3.5 h-3.5" />
+        </LiquidGlassButton>
       </GlassCard>
-
-      <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="flex flex-col items-center gap-2">
-        <span className="text-[10px] font-mono uppercase tracking-widest opacity-40">{t.scroll}</span>
-        <ArrowDown className="w-4 h-4 text-primary opacity-40" />
-      </motion.div>
     </section>
   );
 }
