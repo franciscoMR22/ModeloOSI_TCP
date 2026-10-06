@@ -209,7 +209,13 @@
      son dos capas con opacidad, no una sola que cambia de URL). */
   .mesh-gradient {
     background-color: var(--background);
+    /* position + z-index (cualquier valor) obligan a crear un contexto de apilamiento
+       propio. Sin esto, el z-index:-1 de ::before/::after de abajo compite contra el
+       "canvas background" que <body> propaga a toda la página, y pierde: el fondo
+       ilustrado queda invisible detrás de ese relleno, sin importar que el CSS esté
+       bien — este fue el bug real detrás del "no aparece". */
     position: relative;
+    z-index: 0;
   }
   .mesh-gradient::before,
   .mesh-gradient::after {
