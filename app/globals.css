@@ -31,11 +31,15 @@
      más tenue que antes porque esta imagen ya es mayormente clara/calma por sí sola. */
   --scrim: oklch(0.96 0.01 70 / 0.35);
 
-  /* Glassmorphism Light Variables: vidrio color hueso con un filo neutro de obsidiana
-     (los "modales y demás objetos" quedan en tono obsidiana, como se pidió) */
-  --glass-bg: rgba(216, 206, 190, 0.4);
-  --glass-border: rgba(12, 12, 13, 0.16);
-  --glass-shadow: rgba(12, 12, 13, 0.1);
+  /* Glassmorphism Light Variables: vidrio teñido de obsidiana (no el bone/crema plano
+     de antes) — todos los modales, tarjetas y popovers deben leerse como vidrio de
+     obsidiana de verdad, no como un cristal casi transparente. La opacidad se queda
+     moderada (no 100% obsidiana) porque ningún componente usa --card-foreground/
+     --popover-foreground todavía (el texto hereda --foreground, oscuro); oscurecer
+     más el vidrio sin antes mover el texto a un tono claro rompería la lectura. */
+  --glass-bg: rgba(32, 28, 25, 0.55);
+  --glass-border: rgba(12, 12, 13, 0.22);
+  --glass-shadow: rgba(12, 12, 13, 0.14);
 
   --radius: 0.75rem;
 
@@ -70,8 +74,11 @@
   /* El fondo ya es oscuro de por sí: aquí basta un velo tenue */
   --scrim: oklch(0.07 0.004 260 / 0.3);
 
-  /* Glassmorphism Dark Variables: vidrio de obsidiana con un filo neutro de hueso */
-  --glass-bg: rgba(12, 12, 13, 0.4);
+  /* Glassmorphism Dark Variables: vidrio de obsidiana denso — mucho más opaco que antes
+     (0.4 dejaba que las partes claras del fondo ilustrado "aclararan" la tarjeta en vez
+     de leerse como vidrio sólido; aquí el texto ya es claro, así que oscurecer no rompe
+     la legibilidad como sí pasaría en modo claro). */
+  --glass-bg: rgba(10, 9, 9, 0.82);
   --glass-border: rgba(216, 206, 190, 0.14);
   --glass-shadow: rgba(0, 0, 0, 0.5);
   --glow-strength: 0.28;

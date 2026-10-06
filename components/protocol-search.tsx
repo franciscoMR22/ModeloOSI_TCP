@@ -59,7 +59,7 @@ export function ProtocolSearch({ open, onOpenChange, lang, onSelect }: ProtocolS
       onOpenChange={onOpenChange}
       title={t.title}
       description={t.description}
-      className="glass-card sm:max-w-xl border-white/30 dark:border-white/10 bg-[color-mix(in_oklch,var(--popover)_85%,transparent)] backdrop-blur-2xl"
+      className="glass-card sm:max-w-xl"
     >
       <CommandInput placeholder={t.placeholder} />
       <CommandList className="max-h-[60vh]">

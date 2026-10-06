@@ -133,7 +133,7 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
                   <Languages className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="glass-card">
+              <DropdownMenuContent align="end">
                 {languages.map((lang) => (
                   <DropdownMenuItem key={lang.code} onClick={() => onLanguageChange(lang.code)} className="flex justify-between">
                     {lang.name} {currentLang === lang.code && <Check className="w-3 h-3" />}

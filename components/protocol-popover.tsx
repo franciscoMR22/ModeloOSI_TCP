@@ -96,7 +96,7 @@ export function ProtocolPopover({ protocol, byId, lang, mode, open, onOpenChange
         align="start"
         sideOffset={8}
         collisionPadding={16}
-        className="glass-card w-[min(94vw,34rem)] p-0 rounded-2xl border-white/30 dark:border-white/10 bg-[color-mix(in_oklch,var(--popover)_82%,transparent)] backdrop-blur-2xl shadow-2xl"
+        className="glass-card w-[min(94vw,34rem)] p-0 rounded-2xl shadow-2xl"
         style={{ ["--glow-color" as string]: protocolColor(current) }}
       >
         <AnimatePresence mode="wait" initial={false}>
