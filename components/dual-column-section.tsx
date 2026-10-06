@@ -56,7 +56,7 @@ export function DualColumnSection({ lang, mode, focus, onFocusHandled }: DualCol
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <h2 className="talavera-heading text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        <h2 className="gradient-heading text-3xl md:text-4xl font-bold tracking-tight mb-4">
           {t.osi} <span className="text-primary/40">vs</span> {t.tcp}
         </h2>
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">

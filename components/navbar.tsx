@@ -78,7 +78,7 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
           backdropFilter,
           WebkitBackdropFilter: backdropFilter,
           backgroundColor,
-          backgroundImage: "url('/talavera-crackle.svg')",
+          backgroundImage: "url('/glass-crackle.svg')",
           backgroundSize: "200px 200px",
           backgroundRepeat: "repeat",
           borderColor,
@@ -185,7 +185,7 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
         {/* Barra de progreso de lectura (de la sección activa) */}
         <motion.div
           style={{ scaleX: progress }}
-          className="absolute left-0 right-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-[#2B5F8A] via-[#B8862E] to-[#C0572A]"
+          className="absolute left-0 right-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-[#9C5237] via-[#D8CEBE] to-[#154B34]"
         />
       </motion.div>
     </motion.header>

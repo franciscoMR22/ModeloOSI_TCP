@@ -78,7 +78,7 @@ export function FlowsSection({ lang, mode, onOpenProtocol }: FlowsSectionProps) 
         viewport={{ once: true }}
         className="text-center mb-10"
       >
-        <h2 className="talavera-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">{t.heading}</h2>
+        <h2 className="gradient-heading text-3xl md:text-4xl font-bold tracking-tight mb-3">{t.heading}</h2>
         <p className="font-mono text-xs text-muted-foreground uppercase tracking-widest">{t.subheading}</p>
       </motion.div>
 
@@ -268,7 +268,7 @@ function RttComparison({ lang, highlight }: { lang: Language; highlight: string 
                   className="h-full rounded-md flex items-center px-2 text-[9px] font-mono text-white whitespace-nowrap"
                   animate={{ width: `${(c.rtt / max) * 100}%`, opacity: active ? 1 : 0.6 }}
                   transition={{ type: "spring", stiffness: 140, damping: 22 }}
-                  style={{ background: "linear-gradient(90deg, #2B5F8A, #6E9142, #B8862E)" }}
+                  style={{ background: "linear-gradient(90deg, #9C5237, #D8CEBE, #154B34)" }}
                 >
                   {c.rtt} RTT
                 </motion.div>

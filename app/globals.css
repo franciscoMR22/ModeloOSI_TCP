@@ -4,33 +4,35 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Paleta Light: Talavera y azulejo — añil profundo + terracota cálida sobre crema */
-  --background: oklch(0.97 0.012 75);
-  --foreground: oklch(0.24 0.03 255);
-  --card: oklch(1 0.005 75 / 0.4);
-  --card-foreground: oklch(0.24 0.03 255);
-  --popover: oklch(1 0.005 75 / 0.95);
-  --popover-foreground: oklch(0.24 0.03 255);
-  --primary: oklch(0.42 0.11 250);
-  --primary-foreground: oklch(0.98 0.01 75);
-  --secondary: oklch(0.93 0.02 70);
-  --secondary-foreground: oklch(0.3 0.03 250);
-  --muted: oklch(0.91 0.02 70);
-  --muted-foreground: oklch(0.48 0.03 60);
-  --accent: oklch(0.55 0.14 42);
-  --accent-foreground: oklch(0.98 0.01 75);
+  /* Paleta Light: Obsidiana con incrustaciones — hueso/arena cálidos, acentos de
+     aventurina (cobre) y malaquita (verde), tonos exactos pedidos por el usuario:
+     Obsidiana #0C0C0D · Aventurina #9C5237 · Malaquita #154B34 · Hueso #D8CEBE · Arena #F4EFEB */
+  --background: oklch(0.96 0.01 70);
+  --foreground: oklch(0.18 0.01 260);
+  --card: oklch(1 0.005 70 / 0.4);
+  --card-foreground: oklch(0.18 0.01 260);
+  --popover: oklch(1 0.005 70 / 0.95);
+  --popover-foreground: oklch(0.18 0.01 260);
+  --primary: oklch(0.44 0.12 38);
+  --primary-foreground: oklch(0.97 0.01 70);
+  --secondary: oklch(0.92 0.02 155);
+  --secondary-foreground: oklch(0.25 0.04 155);
+  --muted: oklch(0.9 0.015 70);
+  --muted-foreground: oklch(0.46 0.02 60);
+  --accent: oklch(0.42 0.1 155);
+  --accent-foreground: oklch(0.97 0.01 70);
   --destructive: oklch(0.58 0.19 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.88 0.02 70);
-  --input: oklch(0.88 0.02 70);
-  --ring: oklch(0.42 0.11 250);
-  /* Capa translúcida sobre el fondo de chaquira para que el texto siga siendo legible */
-  --scrim: oklch(0.97 0.012 75 / 0.55);
+  --border: oklch(0.86 0.015 70);
+  --input: oklch(0.86 0.015 70);
+  --ring: oklch(0.44 0.12 38);
+  /* Capa translúcida sobre el fondo de obsidiana para que el texto siga siendo legible */
+  --scrim: oklch(0.96 0.01 70 / 0.55);
 
-  /* Glassmorphism Light Variables: vidrio con un dejo cálido de crema y ocre */
-  --glass-bg: rgba(250, 245, 235, 0.45);
-  --glass-border: rgba(212, 160, 23, 0.25);
-  --glass-shadow: rgba(80, 50, 20, 0.08);
+  /* Glassmorphism Light Variables: vidrio color hueso con un filo de malaquita */
+  --glass-bg: rgba(216, 206, 190, 0.4);
+  --glass-border: rgba(21, 75, 52, 0.22);
+  --glass-shadow: rgba(12, 12, 13, 0.1);
 
   --radius: 0.75rem;
 
@@ -43,31 +45,31 @@
 }
 
 .dark {
-  /* Paleta Dark: Talavera de noche — añil casi negro, con brillo de añil claro y terracota */
-  --background: oklch(0.16 0.025 255);
-  --foreground: oklch(0.94 0.02 75);
-  --card: oklch(0.21 0.03 255 / 0.4);
-  --card-foreground: oklch(0.94 0.02 75);
-  --popover: oklch(0.19 0.03 255 / 0.95);
-  --popover-foreground: oklch(0.94 0.02 75);
-  --primary: oklch(0.68 0.12 235);
-  --primary-foreground: oklch(0.15 0.02 255);
-  --secondary: oklch(0.24 0.025 255);
-  --secondary-foreground: oklch(0.94 0.02 75);
-  --muted: oklch(0.26 0.025 255);
-  --muted-foreground: oklch(0.72 0.02 70);
-  --accent: oklch(0.62 0.13 45);
-  --accent-foreground: oklch(0.15 0.02 255);
-  --border: oklch(0.28 0.025 255);
-  --input: oklch(0.28 0.025 255);
-  --ring: oklch(0.68 0.12 235);
-  /* El fondo de chaquira ya es oscuro de por sí: aquí basta un velo tenue */
-  --scrim: oklch(0.16 0.025 255 / 0.4);
+  /* Paleta Dark: obsidiana pulida de noche, con el brillo de aventurina y malaquita */
+  --background: oklch(0.07 0.004 260);
+  --foreground: oklch(0.9 0.015 70);
+  --card: oklch(0.12 0.006 260 / 0.4);
+  --card-foreground: oklch(0.9 0.015 70);
+  --popover: oklch(0.1 0.006 260 / 0.95);
+  --popover-foreground: oklch(0.9 0.015 70);
+  --primary: oklch(0.62 0.13 42);
+  --primary-foreground: oklch(0.08 0.005 260);
+  --secondary: oklch(0.18 0.01 260);
+  --secondary-foreground: oklch(0.9 0.015 70);
+  --muted: oklch(0.2 0.01 260);
+  --muted-foreground: oklch(0.65 0.015 70);
+  --accent: oklch(0.55 0.11 155);
+  --accent-foreground: oklch(0.08 0.005 260);
+  --border: oklch(0.22 0.012 260);
+  --input: oklch(0.22 0.012 260);
+  --ring: oklch(0.62 0.13 42);
+  /* El fondo de obsidiana ya es oscuro de por sí: aquí basta un velo tenue */
+  --scrim: oklch(0.07 0.004 260 / 0.4);
 
-  /* Glassmorphism Dark Variables: vidrio añil con un filo cálido de ocre */
-  --glass-bg: rgba(22, 28, 48, 0.4);
-  --glass-border: rgba(212, 160, 23, 0.15);
-  --glass-shadow: rgba(0, 0, 0, 0.4);
+  /* Glassmorphism Dark Variables: vidrio de obsidiana con un filo de malaquita */
+  --glass-bg: rgba(12, 12, 13, 0.4);
+  --glass-border: rgba(62, 140, 102, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
   --glow-strength: 0.28;
 }
 
@@ -121,12 +123,12 @@
     display: none;
   }
 
-  /* Vidrio-talavera: cristal esmerilado que además lee como cerámica vidriada —
-     el craquelado del esmalte se ve a través del blur, y un filo interior pintado
-     de ocre enmarca la pieza, como el borde de un plato de talavera. */
+  /* Vidrio con incrustación: cristal esmerilado que además lee como piedra tallada —
+     un craquelado fino se ve a través del blur, y un filo interior de malaquita
+     enmarca la pieza, como el remate de una pieza de taracea. */
   .glass-card {
     background-color: var(--glass-bg);
-    background-image: url("/talavera-crackle.svg");
+    background-image: url("/glass-crackle.svg");
     background-size: 200px 200px;
     background-repeat: repeat;
     border: 1px solid var(--glass-border);
@@ -137,15 +139,15 @@
       inset 0 0 0 1px color-mix(in oklch, var(--accent) 38%, transparent);
   }
 
-  /* Silueta de azulejo cortado (octágono): la firma de forma del sistema, en vez de
+  /* Silueta de faceta cortada (octágono): la firma de forma del sistema, en vez de
      esquinas simples redondeadas. Se usa en medallones de ícono y botones. */
-  .talavera-cut {
+  .facet-cut {
     clip-path: polygon(22% 0, 78% 0, 100% 22%, 100% 78%, 78% 100%, 22% 100%, 0 78%, 0 22%);
   }
 
-  /* Encabezados "pintados": el mismo degradado añil→terracota del título del hero,
+  /* Encabezados "pintados": el mismo degradado cobre→verde del título del hero,
      reutilizado en cada título de sección para que se sienta un solo sistema. */
-  .talavera-heading {
+  .gradient-heading {
     background-image: linear-gradient(90deg, var(--primary), var(--accent));
     background-clip: text;
     -webkit-background-clip: text;
@@ -194,14 +196,15 @@
     mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   }
 
-  /* Fondo: mosaico de chaquira (arte huichol) con motivos de redes/capas OSI en vez de la
-     iconografía tradicional — generado como mosaico de cuentas (public/huichol-network-bg.svg),
-     no una foto. Una sola imagen grande y fija, no repetida, con un velo encima para legibilidad. */
+  /* Fondo: obsidiana pulida con incrustaciones de aventurina (cobre) y malaquita (verde),
+     sin iconografía — solo material (public/obsidian-inlay-bg.jpg), generado por código a
+     partir de la paleta y la técnica, no una foto de una pieza existente. Una sola imagen
+     grande y fija, no repetida, con un velo encima para legibilidad. */
   .mesh-gradient {
     background-color: var(--background);
     background-image:
       linear-gradient(var(--scrim), var(--scrim)),
-      url("/huichol-network-bg.svg");
+      url("/obsidian-inlay-bg.jpg");
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
