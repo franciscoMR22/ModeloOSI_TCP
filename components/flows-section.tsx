@@ -83,7 +83,7 @@ export function FlowsSection({ lang, mode, onOpenProtocol }: FlowsSectionProps) 
       </motion.div>
 
       {/* Pestañas principales */}
-      <div role="tablist" className="flex flex-wrap justify-center gap-2 mb-6">
+      <div data-tour="flows-tabs" role="tablist" className="flex flex-wrap justify-center gap-2 mb-6">
         {(["handshakes", "url"] as Tab[]).map((id) => {
           const Icon = id === "handshakes" ? Handshake : Globe;
           return (

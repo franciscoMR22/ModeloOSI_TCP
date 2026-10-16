@@ -83,7 +83,7 @@ export function DualColumnSection({ lang, mode, focus, onFocusHandled }: DualCol
           {OSI_LAYERS.map((layer, i) => {
             const group = osiToTcpip(layer.number);
             return (
-              <div key={layer.number} ref={(el) => setOsiRef(el, i)}>
+              <div key={layer.number} ref={(el) => setOsiRef(el, i)} data-tour={i === 0 ? "layer-card" : undefined}>
                 <LayerCard
                   layer={layer}
                   isOSI={true}

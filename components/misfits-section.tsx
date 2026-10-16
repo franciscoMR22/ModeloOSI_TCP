@@ -51,6 +51,7 @@ export function MisfitsSection({ lang, mode, onOpenProtocol }: MisfitsSectionPro
         {MISFITS.map((m, i) => (
           <motion.div
             key={m.protocolId}
+            data-tour={i === 0 ? "misfit-card" : undefined}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}

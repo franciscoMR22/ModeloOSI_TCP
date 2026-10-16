@@ -11,6 +11,7 @@ import { EncapsulationSimulator } from "@/components/encapsulation-simulator";
 import { FlowsSection } from "@/components/flows-section";
 import { MisfitsSection } from "@/components/misfits-section";
 import { PracticeSection } from "@/components/practice-section";
+import { ProductTour } from "@/components/product-tour";
 import { Language, DetailMode } from "@/lib/network-data";
 import Image from "next/image";
 
@@ -28,6 +29,12 @@ export default function Page() {
   const [section, setSection] = useState<SectionId>("hero");
   const [focus, setFocus] = useState<ProtocolFocus | null>(null);
   const clearFocus = useCallback(() => setFocus(null), []);
+  const [tourOpen, setTourOpen] = useState(false);
+  const [tourStep, setTourStep] = useState(0);
+  const startTour = useCallback(() => {
+    setTourStep(0);
+    setTourOpen(true);
+  }, []);
 
   // Cambia de sección y repone el scroll al top: el fundido ya aporta la suavidad,
   // así que el salto de posición se hace de golpe en vez de competir con la animación.
@@ -79,6 +86,16 @@ export default function Page() {
         onSearch={() => setSearchOpen(true)}
         active={section}
         onNavigate={goTo}
+        onOpenTour={startTour}
+      />
+      <ProductTour
+        lang={lang}
+        open={tourOpen}
+        stepIndex={tourStep}
+        activeSection={section}
+        onNavigate={goTo}
+        onStepChange={setTourStep}
+        onClose={() => setTourOpen(false)}
       />
       <ProtocolSearch
         open={searchOpen}

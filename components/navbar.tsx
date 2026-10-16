@@ -1,7 +1,7 @@
 "use client";
 
 import { useScroll, useSpring, useTransform, useMotionTemplate, motion } from "motion/react";
-import { Network, Moon, Sun, Languages, Check, Search, GraduationCap, Cpu } from "lucide-react";
+import { Network, Moon, Sun, Languages, Check, Search, GraduationCap, Cpu, HelpCircle } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
@@ -19,8 +19,8 @@ const navLabels = {
 };
 
 const modeLabels = {
-  es: { basic: "Básico", technical: "Técnico", search: "Buscar protocolo" },
-  en: { basic: "Basic", technical: "Technical", search: "Search protocol" },
+  es: { basic: "Básico", technical: "Técnico", search: "Buscar protocolo", help: "Guía rápida" },
+  en: { basic: "Basic", technical: "Technical", search: "Search protocol", help: "Quick guide" },
 };
 
 export type SectionId = keyof (typeof navLabels)["es"];
@@ -38,9 +38,11 @@ interface NavbarProps {
   /** Sección visible actualmente: el menú ya no navega por anclas, decide qué se renderiza en la página. */
   active: SectionId;
   onNavigate: (id: SectionId) => void;
+  /** Abre la guía rápida (recorrido guiado) bajo demanda. */
+  onOpenTour: () => void;
 }
 
-export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSearch, active, onNavigate }: NavbarProps) {
+export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSearch, active, onNavigate, onOpenTour }: NavbarProps) {
   const ml = modeLabels[currentLang];
   const { resolvedTheme, setTheme } = useTheme();
   const { scrollY, scrollYProgress } = useScroll();
@@ -99,7 +101,7 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
 
           <div className="flex items-center gap-1.5">
             {/* Nivel de explicación */}
-            <div role="radiogroup" className="hidden sm:flex items-center rounded-lg border border-primary/15 bg-primary/5 p-0.5">
+            <div data-tour="mode-toggle" role="radiogroup" className="hidden sm:flex items-center rounded-lg border border-primary/15 bg-primary/5 p-0.5">
               {(["basic", "technical"] as DetailMode[]).map((m) => {
                 const ModeIcon = m === "basic" ? GraduationCap : Cpu;
                 return (
@@ -122,14 +124,14 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
               })}
             </div>
 
-            <Button variant="ghost" size="sm" onClick={onSearch} aria-label={ml.search} className="gap-1.5 px-2">
+            <Button data-tour="search" variant="ghost" size="sm" onClick={onSearch} aria-label={ml.search} className="gap-1.5 px-2">
               <Search className="h-4 w-4" />
               <kbd className="hidden lg:inline text-[10px] font-mono px-1.5 py-0.5 rounded border border-border bg-muted/60">Ctrl K</kbd>
             </Button>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Language">
+                <Button data-tour="language" variant="ghost" size="icon" aria-label="Language">
                   <Languages className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -142,22 +144,48 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
               </DropdownMenuContent>
             </DropdownMenu>
 
+            {/* Tema + guía rápida: el botón de ayuda queda apilado justo debajo del de tema
+                en pantallas sm+; en móvil la fila 2 (pestañas de sección) puede ocupar ese
+                espacio, así que ahí se muestra en línea junto a los demás íconos. */}
+            <div className="flex flex-col items-center gap-0.5">
+              <Button
+                data-tour="theme"
+                variant="ghost"
+                size="icon"
+                aria-label="Toggle theme"
+                className="relative"
+                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              >
+                <Sun className="h-4 w-4 transition-transform duration-500 rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-4 w-4 transition-transform duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                aria-label={ml.help}
+                title={ml.help}
+                onClick={onOpenTour}
+                className="hidden sm:inline-flex h-5 w-5 text-foreground/45 hover:text-primary"
+              >
+                <HelpCircle className="h-3.5 w-3.5" />
+              </Button>
+            </div>
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Toggle theme"
-              className="relative"
-              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              aria-label={ml.help}
+              title={ml.help}
+              onClick={onOpenTour}
+              className="sm:hidden text-foreground/60"
             >
-              <Sun className="h-4 w-4 transition-transform duration-500 rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 transition-transform duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+              <HelpCircle className="h-4 w-4" />
             </Button>
           </div>
         </div>
 
         {/* Fila 2: secciones. Siempre visible (también en móvil) porque ahora el menú decide qué se muestra;
             se desliza horizontalmente si no cabe, sin scrollbar visible. */}
-        <nav className="flex items-center gap-0.5 px-2 pb-2 overflow-x-auto no-scrollbar border-t border-white/10 dark:border-white/5 pt-2 mx-2">
+        <nav data-tour="nav-sections" className="flex items-center gap-0.5 px-2 pb-2 overflow-x-auto no-scrollbar border-t border-white/10 dark:border-white/5 pt-2 mx-2">
           {SECTION_IDS.map((key) => {
             const isActive = active === key;
             return (

@@ -169,6 +169,7 @@ export function EncapsulationSimulator({ lang, mode }: EncapsulationSimulatorPro
             </ControlButton>
             <ControlButton
               primary
+              dataTour="sim-play"
               onClick={() => {
                 if (finished) {
                   setStep(-1);
@@ -346,9 +347,10 @@ export function EncapsulationSimulator({ lang, mode }: EncapsulationSimulatorPro
   );
 }
 
-function ControlButton({ children, onClick, disabled, primary, label }: { children: React.ReactNode; onClick: () => void; disabled?: boolean; primary?: boolean; label: string }) {
+function ControlButton({ children, onClick, disabled, primary, label, dataTour }: { children: React.ReactNode; onClick: () => void; disabled?: boolean; primary?: boolean; label: string; dataTour?: string }) {
   return (
     <motion.button
+      data-tour={dataTour}
       onClick={onClick}
       disabled={disabled}
       aria-label={label}

@@ -180,7 +180,7 @@ export function PracticeSection({ lang, mode }: PracticeSectionProps) {
       <GlassCard lift={false} className="rounded-3xl p-4 sm:p-6">
         <div className="relative z-10 space-y-5">
           {/* Opciones */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div data-tour="practice-controls" className="flex flex-wrap items-center gap-2">
             <Segmented value={model} options={(["osi", "tcpip"] as Model[]).map((m) => ({ id: m, label: t.model[m] }))} onChange={setModel} layoutId="practice-model" />
             <Segmented
               value={difficulty}
