@@ -13,6 +13,7 @@ import { MisfitsSection } from "@/components/misfits-section";
 import { PracticeSection } from "@/components/practice-section";
 import { ProductTour } from "@/components/product-tour";
 import { Language, DetailMode } from "@/lib/network-data";
+import { BASE_PATH } from "@/lib/base-path";
 import Image from "next/image";
 
 // Transición "de una vez": sale con un fundido corto y acelerado, entra con el mismo
@@ -120,7 +121,7 @@ export default function Page() {
       <footer className="px-6 py-3 border-t border-primary/10 relative z-10 mt-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Image src="/logo3.png" alt="" width={18} height={18} className="object-contain shrink-0" />
+            <Image src={`${BASE_PATH}/logo3.png`} alt="" width={18} height={18} className="object-contain shrink-0" />
             <span className="font-mono text-[11px] text-muted-foreground">La Libreta de México</span>
           </div>
           <p className="text-[11px] font-mono text-muted-foreground">{footerName}</p>

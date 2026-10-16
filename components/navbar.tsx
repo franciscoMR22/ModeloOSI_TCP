@@ -80,7 +80,7 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
           backdropFilter,
           WebkitBackdropFilter: backdropFilter,
           backgroundColor,
-          backgroundImage: "url('/glass-crackle.svg')",
+          backgroundImage: "var(--bg-glass-crackle)",
           backgroundSize: "200px 200px",
           backgroundRepeat: "repeat",
           borderColor,

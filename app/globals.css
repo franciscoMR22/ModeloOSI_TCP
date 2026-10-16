@@ -143,7 +143,7 @@
      no en el color de acento, para no competir con el fondo ilustrado. */
   .glass-card {
     background-color: var(--glass-bg);
-    background-image: url("/glass-crackle.svg");
+    background-image: var(--bg-glass-crackle);
     background-size: 200px 200px;
     background-repeat: repeat;
     border: 1px solid var(--glass-border);
@@ -239,11 +239,11 @@
     transition: opacity var(--dur-slow) var(--ease-out-expo);
   }
   .mesh-gradient::before {
-    background-image: linear-gradient(var(--scrim), var(--scrim)), url("/obsidian-courier-light.jpg");
+    background-image: linear-gradient(var(--scrim), var(--scrim)), var(--bg-courier-light);
     opacity: 1;
   }
   .mesh-gradient::after {
-    background-image: linear-gradient(var(--scrim), var(--scrim)), url("/obsidian-courier-dark.jpg");
+    background-image: linear-gradient(var(--scrim), var(--scrim)), var(--bg-courier-dark);
     opacity: 0;
   }
   .dark .mesh-gradient::before {
