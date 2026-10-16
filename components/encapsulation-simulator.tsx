@@ -124,7 +124,7 @@ export function EncapsulationSimulator({ lang, mode }: EncapsulationSimulatorPro
     <section className="px-4 sm:px-6 lg:px-8 py-20 max-w-5xl mx-auto">
       <GlassCard lift={false} className="rounded-3xl overflow-hidden">
         {/* Barra de consola */}
-        <div className="relative z-10 bg-slate-900/90 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 border-b border-white/10">
+        <div className="relative z-10 bg-[#0C0C0D]/90 px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 border-b border-white/10">
           <div className="flex items-center gap-3">
             <div className="flex gap-1.5">
               <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -159,7 +159,7 @@ export function EncapsulationSimulator({ lang, mode }: EncapsulationSimulatorPro
           </div>
         </div>
 
-        <div className="relative z-10 p-4 sm:p-8 space-y-6 bg-slate-50/50 dark:bg-slate-950/50">
+        <div className="relative z-10 p-4 sm:p-8 space-y-6">
           <p className="text-sm text-muted-foreground">{t.subtitle}</p>
 
           {/* Controles */}

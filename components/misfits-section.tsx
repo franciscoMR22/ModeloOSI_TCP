@@ -109,7 +109,7 @@ function MisfitCard({ misfit: m, lang, mode, onOpen }: { misfit: Misfit; lang: L
             <span className="flex items-start gap-1.5 text-[10px] font-mono text-emerald-700 dark:text-emerald-300">
               <Truck className="w-3 h-3 mt-px shrink-0" /> {t.carrier}: {m.carrier[lang]}
             </span>
-            <GlassButton onClick={onOpen} glowColor={color} size="sm" className="text-primary">
+            <GlassButton onClick={onOpen} size="sm">
               {t.open} <ExternalLink className="w-3 h-3" />
             </GlassButton>
           </div>

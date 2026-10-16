@@ -31,13 +31,16 @@
      más tenue que antes porque esta imagen ya es mayormente clara/calma por sí sola. */
   --scrim: oklch(0.96 0.01 70 / 0.35);
 
-  /* Glassmorphism Light Variables: vidrio teñido de obsidiana (no el bone/crema plano
-     de antes) — todos los modales, tarjetas y popovers deben leerse como vidrio de
-     obsidiana de verdad, no como un cristal casi transparente. La opacidad se queda
-     moderada (no 100% obsidiana) porque ningún componente usa --card-foreground/
-     --popover-foreground todavía (el texto hereda --foreground, oscuro); oscurecer
-     más el vidrio sin antes mover el texto a un tono claro rompería la lectura. */
-  --glass-bg: rgba(32, 28, 25, 0.55);
+  /* Glassmorphism Light Variables: vidrio hueso denso. Se probó un tinte oscuro de
+     obsidiana aquí mismo y no funcionó: en modo claro se veía como una mancha gris
+     que no se adaptaba al tema (además el texto hereda --foreground oscuro, así que
+     un vidrio oscuro le habría quitado contraste). La lección: "obsidiana" es el
+     material del SITIO (fondo, acentos, bordes), no un mandato de que el vidrio
+     tenga que verse oscuro en los dos modos — cada modo adapta su propio tono, y lo
+     que de verdad pedía el usuario era que el vidrio se sintiera denso (opacidad
+     alta) y no transparente, no que fuera negro en modo claro. El borde sí se deja
+     con un filo de obsidiana — eso funciona bien como acento, no como relleno. */
+  --glass-bg: rgba(216, 206, 190, 0.72);
   --glass-border: rgba(12, 12, 13, 0.22);
   --glass-shadow: rgba(12, 12, 13, 0.14);
 

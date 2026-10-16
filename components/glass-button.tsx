@@ -5,26 +5,22 @@ import { motion, type HTMLMotionProps } from "motion/react";
 import { cn } from "@/lib/utils";
 import { HOVER_SPRING } from "@/components/glass-card";
 
-// Más relleno horizontal que un botón normal: los cortes de esquina del octágono
-// (.facet-cut) necesitan margen extra para no comerse el texto.
 const SIZES = {
   sm: "h-8 px-4 text-[11px]",
-  default: "h-10 px-7 text-sm",
+  default: "h-10 px-5 text-sm",
 } as const;
 
 export interface GlassButtonProps extends HTMLMotionProps<"button"> {
-  /** Tiñe el vidrio y el borde; por defecto el color primario del tema. */
-  glowColor?: string;
   size?: keyof typeof SIZES;
 }
 
 /**
- * Botón con el mismo vidrio esmerilado del resto del sitio: reutiliza la clase `.glass-card`
- * (fondo translúcido + blur(16px) + borde y sombra suaves), solo con el color de fondo y de
- * borde teñidos por `glowColor` para que cada instancia adopte el color de su capa.
+ * Botón con el mismo vidrio esmerilado del resto del sitio: reutiliza `.glass-card` tal
+ * cual (mismo fondo, borde y filo que cualquier tarjeta o modal), sin teñirlo por instancia
+ * — así se ve igual en todos lados, sin importar en qué sección o junto a qué capa aparezca.
  */
 export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(function GlassButton(
-  { glowColor = "var(--primary)", size = "default", className, children, type = "button", style, ...props },
+  { size = "default", className, children, type = "button", ...props },
   ref
 ) {
   return (
@@ -34,13 +30,8 @@ export const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(funct
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.96 }}
       transition={HOVER_SPRING}
-      style={{
-        background: `color-mix(in oklch, ${glowColor} 16%, var(--glass-bg))`,
-        borderColor: `color-mix(in oklch, ${glowColor} 42%, var(--glass-border))`,
-        ...style,
-      }}
       className={cn(
-        "glass-card facet-cut inline-flex items-center justify-center gap-1.5 font-mono font-bold transition-shadow duration-300 hover:shadow-lg",
+        "glass-card rounded-full inline-flex items-center justify-center gap-1.5 font-mono font-bold text-primary transition-shadow duration-300 hover:shadow-lg",
         SIZES[size],
         className
       )}
