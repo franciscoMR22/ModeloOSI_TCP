@@ -68,8 +68,8 @@ export const TOUR_STEPS: TourStep[] = [
     section: "hero",
     title: { es: "Modo claro / oscuro", en: "Light / dark mode" },
     body: {
-      es: "Cambia la apariencia del sitio cuando quieras. Justo debajo de este botón puedes reabrir esta guía siempre que la necesites.",
-      en: "Switch the site's look whenever you like. Right below this button you can reopen this guide any time you need it.",
+      es: "Cambia la apariencia del sitio cuando quieras. Justo a la derecha de este botón puedes reabrir esta guía siempre que la necesites.",
+      en: "Switch the site's look whenever you like. Right next to this button you can reopen this guide any time you need it.",
     },
   },
   {
@@ -128,8 +128,8 @@ export const TOUR_STEPS: TourStep[] = [
     section: null,
     title: { es: "Listo para explorar", en: "Ready to explore" },
     body: {
-      es: "Eso es todo. Puedes reabrir esta guía cuando quieras desde el botón de ayuda, justo debajo del interruptor de tema.",
-      en: "That's it. You can reopen this guide any time from the help button, right below the theme switch.",
+      es: "Eso es todo. Puedes reabrir esta guía cuando quieras desde el botón de ayuda, justo al lado del interruptor de tema.",
+      en: "That's it. You can reopen this guide any time from the help button, right next to the theme switch.",
     },
   },
 ];

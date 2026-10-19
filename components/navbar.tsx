@@ -100,8 +100,10 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
           </button>
 
           <div className="flex items-center gap-1.5">
-            {/* Nivel de explicación */}
-            <div data-tour="mode-toggle" role="radiogroup" className="hidden sm:flex items-center rounded-lg border border-primary/15 bg-primary/5 p-0.5">
+            {/* Nivel de explicación: en móvil queda solo el ícono (con tooltip nativo vía
+                title/aria-label) para no desbordar la barra; desde sm: se ve icono + texto,
+                igual que el resto de las etiquetas que se revelan en pantallas más anchas. */}
+            <div data-tour="mode-toggle" role="radiogroup" className="flex items-center rounded-lg border border-primary/15 bg-primary/5 p-0.5">
               {(["basic", "technical"] as DetailMode[]).map((m) => {
                 const ModeIcon = m === "basic" ? GraduationCap : Cpu;
                 return (
@@ -109,8 +111,10 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
                     key={m}
                     role="radio"
                     aria-checked={mode === m}
+                    aria-label={ml[m]}
+                    title={ml[m]}
                     onClick={() => onModeChange(m)}
-                    className={`relative flex items-center gap-1 text-[11px] font-medium px-2 py-1 rounded-md transition-colors duration-300 ${
+                    className={`relative flex items-center gap-1 text-[11px] font-medium px-2 py-1.5 sm:py-1 rounded-md transition-colors duration-300 ${
                       mode === m ? "text-primary" : "text-foreground/60 hover:text-foreground"
                     }`}
                   >
@@ -118,7 +122,7 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
                       <motion.span layoutId="mode-pill" transition={HOVER_SPRING} className="absolute inset-0 rounded-md bg-background/80 shadow-sm border border-primary/20" />
                     )}
                     <ModeIcon className="relative w-3.5 h-3.5" />
-                    <span className="relative">{ml[m]}</span>
+                    <span className="relative hidden sm:inline">{ml[m]}</span>
                   </button>
                 );
               })}
@@ -144,39 +148,25 @@ export function Navbar({ onLanguageChange, currentLang, mode, onModeChange, onSe
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Tema + guía rápida: el botón de ayuda queda apilado justo debajo del de tema
-                en pantallas sm+; en móvil la fila 2 (pestañas de sección) puede ocupar ese
-                espacio, así que ahí se muestra en línea junto a los demás íconos. */}
-            <div className="flex flex-col items-center gap-0.5">
-              <Button
-                data-tour="theme"
-                variant="ghost"
-                size="icon"
-                aria-label="Toggle theme"
-                className="relative"
-                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-              >
-                <Sun className="h-4 w-4 transition-transform duration-500 rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-4 w-4 transition-transform duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                aria-label={ml.help}
-                title={ml.help}
-                onClick={onOpenTour}
-                className="hidden sm:inline-flex h-5 w-5 text-foreground/45 hover:text-primary"
-              >
-                <HelpCircle className="h-3.5 w-3.5" />
-              </Button>
-            </div>
+            <Button
+              data-tour="theme"
+              variant="ghost"
+              size="icon"
+              aria-label="Toggle theme"
+              className="relative"
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            >
+              <Sun className="h-4 w-4 transition-transform duration-500 rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-4 w-4 transition-transform duration-500 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+            </Button>
+            {/* Guía rápida: siempre a la derecha del interruptor de tema, en cualquier tamaño de pantalla. */}
             <Button
               variant="ghost"
               size="icon"
               aria-label={ml.help}
               title={ml.help}
               onClick={onOpenTour}
-              className="sm:hidden text-foreground/60"
+              className="text-foreground/60 hover:text-primary"
             >
               <HelpCircle className="h-4 w-4" />
             </Button>
