@@ -18,3 +18,4 @@ pnpm-debug.log*
 # Herramientas
 .vercel
 .claude/settings.local.json
+CLAUDE.md
